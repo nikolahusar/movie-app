@@ -58,17 +58,25 @@ const Home = () => {
   ));
 
   return (
-    <div className="text-indigo-600 bg-gray-800 ">
-      <div className="container mx-auto p-8 font-ubuntu">
-        <h2 className="text-2xl mb-4 mt-20 font-semibold sm:pt-20 md:pt-20 ">
-          Popular movies:
-        </h2>
-        <div className="max-w-screen-2xl flex-wrap flex gap-4 mb-20  ">
-          {renderMovies}
-        </div>
-        <h2 className="text-2xl mb-4 font-semibold">Popular TvShows:</h2>
-        <div className="max-w-screen-2xl flex-wrap flex gap-4">
-          {renderTvShows}
+    <div className="text-indigo-600 bg-gray-800  ">
+      <div className="container mx-auto py-8 font-ubuntu  ">
+        <div className="flex flex-col px-4 ">
+          <div className=" ">
+            <h2 className="text-2xl mb-4 mt-20 font-semibold sm:pt-10 md:pt-6 ">
+              Popular movies:
+            </h2>
+            <div className="grid grid-rows-3 gap-y-8 mb-20 sm:mb-10 grid-flow-col sm:grid-cols-2   sm:grid-flow-row">
+              {renderMovies}
+            </div>
+          </div>
+          <div className="flex-1">
+            <h2 className="text-2xl mb-4 font-semibold md:mt-10 mt-20">
+              Popular TvShows:
+            </h2>
+            <div className="grid grid-rows-3 gap-y-8  mb-20  grid-flow-col sm:grid-cols-2  sm:grid-flow-row">
+              {renderTvShows}
+            </div>
+          </div>
         </div>
       </div>
     </div>

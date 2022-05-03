@@ -30,13 +30,13 @@ const TvShow = () => {
   return (
     <div className="w-full min-h-screen bg-gray-900 font-ubuntu overflow-x-hidden">
       <div
-        className="max-w-7xl mx-auto  bg-cover bg-center relative min-h-screen sm:px-4 sm:pt-10  p-20 "
+        className="container mx-auto  bg-cover bg-center relative min-h-screen sm:px-4 sm:pt-10  p-20 "
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(${bg})`,
         }}
       >
-        <div className="pt-20 text-white relative">
-          <div className="flex sm:flex-col sm:p-4 sm:m-0">
+        <div className="pt-20 sm:pt-10 text-white relative">
+          <div className="flex sm:flex-col sm:py-4 sm:m-0">
             <div className="flex-1 pb-6 ">
               <img
                 src={poster}
@@ -56,7 +56,7 @@ const TvShow = () => {
                 {data.overview}
               </p>
               <hr className="opacity-30" />
-              <div className="flex gap-2 text-sm text-gray-300 sm:text-xs md:text-xs">
+              <div className="flex gap-2 text-sm text-gray-300 sm:text-xs md:text-xs flex-wrap">
                 {data?.genres?.map((genre) => (
                   <div key={genre.id} className="flex">
                     <p>{genre.name}</p>
@@ -72,7 +72,7 @@ const TvShow = () => {
                 |<span>{data.episode_run_time} minutes.</span>
               </div>
               <hr className="opacity-30" />
-              <div className="flex gap-2 text-sm text-gray-300 sm:text-xs md:text-xs">
+              <div className="flex gap-2 text-sm flex-wrap text-gray-300 sm:text-xs md:text-xs">
                 {data?.production_companies?.map((company) => (
                   <div key={company.id} className="flex">
                     <p>{company.name}.</p>
@@ -110,7 +110,7 @@ const TvShow = () => {
             <h3 className="text-xl text-white py-10 sm:text-sm md:text-sm">
               People also search for:
             </h3>
-            <div className="flex gap-3 sm:flex-wrap md:flex-wrap sm:gap-6 md:gap-6 lg:flex-wrap lg:gap-6">
+            <div className="flex gap-3 sm:flex-wrap md:flex-wrap sm:gap-6 md:gap-6 lg:flex-wrap lg:gap-6 justify-center">
               {recommendations?.map((recom) => (
                 <TvShowCard
                   key={recom.id}

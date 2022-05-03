@@ -21,12 +21,12 @@ const Navbar = () => {
 
   return (
     <div className="max-w-screen top-0 fixed z-20 bg-black  w-full">
-      <div className=" flex container  mx-auto justify-between  p-4 text-indigo-400 font-bold items-center  ">
-        <div className="text-3xl flex-1 sm:text-base">
+      <div className=" flex container mx-auto justify-between  p-4 text-indigo-400 font-bold items-center  ">
+        <div className="text-3xl flex-1 sm:text-base ">
           <Link to="/">Moviex</Link>
         </div>
 
-        <div className="flex-2 sm:hidden">
+        <div className="flex-1 sm:hidden ">
           <ul className="font-bolder px-4 text-md text-indigo-400  font-ubuntu inline-flex mr-10  sm:flex sm:flex-col sm:text-xs sm:gap-2  md:flex md:flex-col md:text-xs md:gap-2">
             <li className="px-6 hover:text-indigo-600 sm:none">
               <Link to="/movie-list">Movie list</Link>
@@ -44,8 +44,8 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="flex-1 ">
-          <form onChange={(e) => setQuery(e.target.value)} className="relative">
+        <div className="flex-1  flex justify-end">
+          <form onChange={(e) => setQuery(e.target.value)}>
             <div className="flex items-center">
               <input
                 type="text"

@@ -31,64 +31,70 @@ const Movie = () => {
   const poster = baseImageUrl + data.poster_path;
   return (
     <>
-      <div className="w-full min-h-screen bg-gray-900 font-ubuntu">
+      <div className="w-full min-h-screen bg-gray-900 font-ubuntu overflow-x-hidden">
         <div
-          className="max-w-7xl mx-auto  bg-cover bg-center relative min-h-screen  p-20 "
+          className="container mx-auto  bg-cover bg-center relative min-h-screen  p-20 sm:px-4 sm:pt-10"
           style={{
             backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(${bg})`,
           }}
         >
-          <div className="pt-20 flex text-white relative">
-            <img
-              src={poster}
-              alt={data.title}
-              className="w-52 h-80 sm:w-36 sm:h-48"
-            />
-            <div className="flex flex-col ml-10 gap-3">
-              <h1 className="text-3xl flex items-center sm:text-lg md:text-lg">
-                {data.title}
-                <span className="text-2xl ml-2 opacity-60 pt-1">
-                  ({new Date(data.release_date).getFullYear() || ""})
-                </span>
-              </h1>
-              <h2 className="sm:text-md md:text-md">{data.tagline}</h2>
-              <p className="text-gray-300 sm:text-xs md:text-sm">
-                {data.overview}
-              </p>
-              <hr className="opacity-30" />
-              <div className="flex gap-2 text-sm text-gray-300 sm:text-xs md:text-xs">
-                {data?.genres?.map((genre) => (
-                  <div key={genre.id} className="flex">
-                    <p>{genre.name}</p>
-                  </div>
-                ))}
-                |
-                <p className="flex items-center gap-2">
-                  {data.vote_average}
-                  <span>
-                    <AiFillStar className="text-yellow-500" />
+          <div className="pt-20 flex text-white relative sm:pt-10">
+            <div className="flex sm:flex-col sm:py-4 sm:m-0">
+              <div className="flex-1 pb-6 ">
+                <img
+                  src={poster}
+                  alt={data.title}
+                  className="w-[220px] h-[300px] sm:w-full sm:object-center "
+                />
+              </div>
+              <div className="flex flex-col ml-10 gap-3 sm:ml-0 flex-4 ">
+                <h1 className="text-3xl flex items-center sm:text-lg md:text-lg">
+                  {data.title}
+                  <span className="text-2xl ml-2 opacity-60 pt-1">
+                    ({new Date(data.release_date).getFullYear() || ""})
                   </span>
+                </h1>
+                <h2 className="sm:text-md md:text-md">{data.tagline}</h2>
+                <p className="text-gray-300 sm:text-xs md:text-sm">
+                  {data.overview}
                 </p>
-                |<span>{data.runtime} minutes.</span>
+                <hr className="opacity-30" />
+                <div className="flex gap-2 text-sm text-gray-300 sm:text-xs md:text-xs flex-wrap">
+                  {data?.genres?.map((genre) => (
+                    <div key={genre.id} className="flex">
+                      <p>{genre.name}</p>
+                    </div>
+                  ))}
+                  |
+                  <p className="flex items-center gap-2">
+                    {data.vote_average}
+                    <span>
+                      <AiFillStar className="text-yellow-500" />
+                    </span>
+                  </p>
+                  |<span>{data.runtime} minutes.</span>
+                </div>
+                <hr className="opacity-30" />
+                <div className="flex gap-2 flex-wrap text-sm text-gray-300">
+                  {data?.production_companies?.map((company) => (
+                    <div
+                      key={company.id}
+                      className="flex sm:text-xs md:text-xs"
+                    >
+                      <p>{company.name}.</p>
+                    </div>
+                  ))}
+                </div>
+                {findTrailer?.id && (
+                  <button
+                    className="p-2 text-white hover:bg-indigo-400 font-bold tracking-wider text-lg transition duration-500 border border-indigo-400 sm:text-sm md:text-sm"
+                    onClick={() => setVideoPlayer(true)}
+                  >
+                    Play trailer
+                  </button>
+                )}
               </div>
-              <hr className="opacity-30" />
-              <div className="flex gap-2 text-sm text-gray-300">
-                {data?.production_companies?.map((company) => (
-                  <div key={company.id} className="flex sm:text-xs md:text-xs">
-                    <p>{company.name}.</p>
-                  </div>
-                ))}
-              </div>
-              {findTrailer?.id && (
-                <button
-                  className="p-2 text-white hover:bg-indigo-400 font-bold tracking-wider text-lg transition duration-500 border border-indigo-400 sm:text-sm md:text-sm"
-                  onClick={() => setVideoPlayer(true)}
-                >
-                  Play trailer
-                </button>
-              )}
             </div>
-
             {findTrailer && videoPlayer ? (
               <>
                 <iframe
@@ -110,7 +116,7 @@ const Movie = () => {
               <h3 className="text-xl text-white py-10 sm:text-sm md:text-sm">
                 People also search for:
               </h3>
-              <div className="flex gap-3 sm:flex-wrap md:flex-wrap sm:gap-6 md:gap-6 lg:flex-wrap lg:gap-6">
+              <div className="flex sm:justify-center gap-3 sm:flex-wrap md:flex-wrap sm:gap-6 md:gap-6 lg:flex-wrap lg:gap-6">
                 {recommendations?.map((recom) => (
                   <Moviecard
                     key={recom.id}

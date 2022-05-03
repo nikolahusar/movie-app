@@ -47,10 +47,13 @@ const MovieList = () => {
     setState({ currentPage: pageNumber });
   };
   const numberPages = movieList.movielist.total_pages;
-
+  const handleOption = (option) => {
+    setOptions(option);
+    setMenu(false);
+  };
   return (
-    <div className="bg-gray-800 text-white min-h-screen w-screen">
-      <div className="container mx-auto p-8 font-ubuntu">
+    <div className="bg-gray-800 text-white">
+      <div className="container mx-auto p-4 font-ubuntu">
         <h1 className="text-2xl mb-8 mt-20 font-semibold text-center">
           Movie list
         </h1>
@@ -87,7 +90,7 @@ const MovieList = () => {
                   <div
                     className="cursor-pointer"
                     key={option.id}
-                    onClick={() => setOptions(option.id)}
+                    onClick={() => handleOption(option.id)}
                   >
                     <p className="p-3 text-indigo-600 hover:bg-yellow-300">
                       {option.name}
