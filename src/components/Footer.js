@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="max-w-screen bg-black  w-full min-h-64">
-      <div className="max-w-screen-2xl w-full mx-auto   p-4 text-indigo-400 font-bold  ">
+    <div className="max-w-screen bg-black  w-full min-h-64 ">
+      <div className="max-w-screen-2xl w-full mx-auto  p-4 text-indigo-400 font-bold  ">
         <div className="flex items-center justify-between">
           <div className="">
             <div className="text-5xl sm:text-base">Moviex</div>

@@ -58,9 +58,9 @@ const Home = () => {
   ));
 
   return (
-    <div className="text-indigo-600 bg-gray-800 sm:bg-red-500  ">
+    <div className="text-indigo-600 bg-gray-800 ">
       <div className="container mx-auto p-8 font-ubuntu">
-        <h2 className="text-2xl mb-4 mt-20 font-semibold sm:pt-20 md:pt-20">
+        <h2 className="text-2xl mb-4 mt-20 font-semibold sm:pt-20 md:pt-20 ">
           Popular movies:
         </h2>
         <div className="max-w-screen-2xl flex-wrap flex gap-4 mb-20  ">

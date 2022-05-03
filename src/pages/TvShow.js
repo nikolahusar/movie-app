@@ -28,62 +28,66 @@ const TvShow = () => {
     dispatch(getTvShowRec(id));
   }, [dispatch, id]);
   return (
-    <div className="w-full min-h-screen bg-gray-900 font-ubuntu">
+    <div className="w-full min-h-screen bg-gray-900 font-ubuntu overflow-x-hidden">
       <div
-        className="max-w-7xl mx-auto  bg-cover bg-center relative min-h-screen  p-20 "
+        className="max-w-7xl mx-auto  bg-cover bg-center relative min-h-screen sm:px-4 sm:pt-10  p-20 "
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(${bg})`,
         }}
       >
-        <div className="pt-20 flex text-white relative">
-          <img
-            src={poster}
-            alt={data.name}
-            className="w-52 h-80 sm:w-36 sm:h-48"
-          />
-          <div className="flex flex-col ml-10 gap-3">
-            <h1 className="text-3xl flex items-center sm:text-lg md:text-lg">
-              {data.name}
-              <span className="text-2xl ml-2 opacity-60 pt-1">
-                ({new Date(data.first_air_date).getFullYear() || ""})
-              </span>
-            </h1>
-            <h2 className="sm:text-md md:text-md">{data.tagline}</h2>
-            <p className="text-gray-300 sm:text-xs md:text-sm">
-              {data.overview}
-            </p>
-            <hr className="opacity-30" />
-            <div className="flex gap-2 text-sm text-gray-300 sm:text-xs md:text-xs">
-              {data?.genres?.map((genre) => (
-                <div key={genre.id} className="flex">
-                  <p>{genre.name}</p>
-                </div>
-              ))}
-              |
-              <p className="flex items-center gap-2">
-                {data.vote_average}
-                <span>
-                  <AiFillStar className="text-yellow-500" />
+        <div className="pt-20 text-white relative">
+          <div className="flex sm:flex-col sm:p-4 sm:m-0">
+            <div className="flex-1 pb-6 ">
+              <img
+                src={poster}
+                alt={data.name}
+                className="   w-[220px] h-[300px] sm:w-full sm:object-cover "
+              />
+            </div>
+            <div className="flex flex-col ml-10 gap-3 sm:ml-0 flex-4">
+              <h1 className="text-3xl flex items-center sm:text-lg md:text-lg">
+                {data.name}
+                <span className="text-2xl ml-2 opacity-60 pt-1">
+                  ({new Date(data.first_air_date).getFullYear() || ""})
                 </span>
+              </h1>
+              <h2 className="sm:text-md md:text-md">{data.tagline}</h2>
+              <p className="text-gray-300 sm:text-xs md:text-sm">
+                {data.overview}
               </p>
-              |<span>{data.episode_run_time} minutes.</span>
+              <hr className="opacity-30" />
+              <div className="flex gap-2 text-sm text-gray-300 sm:text-xs md:text-xs">
+                {data?.genres?.map((genre) => (
+                  <div key={genre.id} className="flex">
+                    <p>{genre.name}</p>
+                  </div>
+                ))}
+                |
+                <p className="flex items-center gap-2">
+                  {data.vote_average}
+                  <span>
+                    <AiFillStar className="text-yellow-500" />
+                  </span>
+                </p>
+                |<span>{data.episode_run_time} minutes.</span>
+              </div>
+              <hr className="opacity-30" />
+              <div className="flex gap-2 text-sm text-gray-300 sm:text-xs md:text-xs">
+                {data?.production_companies?.map((company) => (
+                  <div key={company.id} className="flex">
+                    <p>{company.name}.</p>
+                  </div>
+                ))}
+              </div>
+              {findTrailer?.id && (
+                <button
+                  className="p-2 text-white hover:bg-indigo-400 font-bold tracking-wider text-lg transition duration-500 border border-indigo-400  sm:text-sm md:text-sm"
+                  onClick={() => setVideoPlayer(true)}
+                >
+                  Play trailer
+                </button>
+              )}
             </div>
-            <hr className="opacity-30" />
-            <div className="flex gap-2 text-sm text-gray-300 sm:text-xs md:text-xs">
-              {data?.production_companies?.map((company) => (
-                <div key={company.id} className="flex">
-                  <p>{company.name}.</p>
-                </div>
-              ))}
-            </div>
-            {findTrailer?.id && (
-              <button
-                className="p-2 text-white hover:bg-indigo-400 font-bold tracking-wider text-lg transition duration-500 border border-indigo-400  sm:text-sm md:text-sm"
-                onClick={() => setVideoPlayer(true)}
-              >
-                Play trailer
-              </button>
-            )}
           </div>
           {findTrailer && videoPlayer ? (
             <>

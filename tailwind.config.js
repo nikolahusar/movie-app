@@ -20,6 +20,7 @@ module.exports = {
         lg: { max: "1024px" },
         md: { max: "768px" },
         sm: { max: "640px" },
+        xs: { max: "360px" },
       },
       fontFamily: {
         ubuntu: ["Ubuntu", "sans-serif"],
@@ -30,6 +31,7 @@ module.exports = {
       flex: {
         2: "2 2 0%",
         3: "3 3 0%",
+        4: "4 4 0%",
       },
 
       display: ["group-focus"],
